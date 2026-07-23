@@ -1,0 +1,77 @@
+name: E2E & Selenium Automated Test Suite
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  selenium-e2e-tests:
+    name: Run Selenium E2E Tests & Generate Excel Report
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js Environment
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+          cache-dependency-path: 'web/package.json'
+
+      - name: Set up Python Environment
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python Dependencies for Excel Generation
+        run: |
+          python -m pip install --upgrade pip
+          pip install openpyxl
+
+      - name: Install Web Frontend Dependencies & Build
+        run: |
+          cd web
+          npm ci
+          npm run build
+
+      - name: Start Web Frontend Preview Server in Background
+        run: |
+          cd web
+          npm run preview -- --port 5173 &
+          sleep 5
+
+      - name: Install Selenium Test Dependencies
+        run: |
+          cd frontend/selenuim-tests
+          npm ci
+
+      - name: Install Chrome Browser & ChromeDriver
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Execute Automated Selenium Login Tests (Headless)
+        env:
+          HEADLESS: "true"
+          TEST_BASE_URL: "http://localhost:5173/login"
+        run: |
+          cd frontend/selenuim-tests
+          npm test
+
+      - name: Generate 305 Test Cases Excel Report
+        run: |
+          python frontend/selenuim-tests/generate_excel_report.py
+
+      - name: Upload Excel Test Report Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MockAI-Login-E2E-305-TestCases-Report
+          path: |
+            frontend/selenuim-tests/MockAI_E2E_Login_Test_Suite_305_TestCases.xlsx
+            frontend/selenuim-tests/login_test_cases_summary_and_details.xlsx
+          retention-days: 30

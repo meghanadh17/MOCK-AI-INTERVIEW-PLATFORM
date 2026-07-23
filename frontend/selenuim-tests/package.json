@@ -1,0 +1,23 @@
+{
+  "name": "mockai-selenium-tests",
+  "version": "1.0.0",
+  "description": "Selenium E2E Automated Test Suite for MockAI Web Frontend",
+  "main": "tests/login.test.js",
+  "scripts": {
+    "test": "node tests/login.test.js"
+  },
+  "keywords": [
+    "selenium",
+    "e2e",
+    "testing",
+    "mockai",
+    "webdriver"
+  ],
+  "author": "MockAI QA Team",
+  "license": "MIT",
+  "dependencies": {
+    "chromedriver": "^131.0.0",
+    "geckodriver": "^5.0.0",
+    "selenium-webdriver": "^4.27.0"
+  }
+}
