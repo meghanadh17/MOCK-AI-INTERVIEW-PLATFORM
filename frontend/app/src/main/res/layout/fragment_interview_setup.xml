@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_void"
+    android:fitsSystemWindows="true">
+
+    <!-- Header layout -->
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/spacing_md"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/card_icon_size"
+            android:layout_height="@dimen/card_icon_size"
+            android:background="@drawable/bg_button_neo"
+            android:src="@drawable/ic_arrow_back"
+            android:scaleType="center"
+            android:contentDescription="Back"
+            app:tint="@color/text_muted" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_breadcrumb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="INTERVIEW · SETUP"
+                android:textAppearance="@style/TextAppearance.App.Label" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="New Session"
+                android:textAppearance="@style/TextAppearance.App.Heading" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/header_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_subtle"
+        app:layout_constraintTop_toBottomOf="@id/layout_header" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/header_divider"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_md">
+
+            <!-- Hero GradientCard -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:cardElevation="0dp"
+                android:layout_marginBottom="24dp">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="120dp"
+                    android:background="@drawable/gradient_interview" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Adaptive Practice"
+                        android:textAppearance="@style/TextAppearance.App.Title"
+                        android:textColor="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="AI-powered contextual interview simulation based on your primary resume details."
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="#E2E8F0" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Resume Custom Selector -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Select Resume"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim" />
+
+            <LinearLayout
+                android:id="@+id/select_resume_container"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_input_dark"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tv_selected_resume"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="-- No Resume Context (General Questions) --"
+                    android:textAppearance="@style/TextAppearance.App.Body"
+                    android:textColor="@color/text_prim" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow_forward"
+                    android:rotation="90"
+                    app:tint="@color/text_muted" />
+            </LinearLayout>
+
+            <!-- Target Job Role Custom Selector -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Target Role"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim" />
+
+            <LinearLayout
+                android:id="@+id/select_role_container"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/bg_input_dark"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="16dp"
+                android:clickable="true"
+                android:focusable="true">
+
+                <TextView
+                    android:id="@+id/tv_selected_role"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text=""
+                    android:hint="e.g. Senior Android Developer"
+                    android:textColorHint="@color/text_muted"
+                    android:textAppearance="@style/TextAppearance.App.Body"
+                    android:textColor="@color/text_prim" />
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/ic_arrow_forward"
+                    android:rotation="90"
+                    app:tint="@color/text_muted" />
+            </LinearLayout>
+
+            <!-- Interview Mode selection -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Interview Mode"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim" />
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/chip_group_mode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="20dp"
+                app:singleSelection="true"
+                app:selectionRequired="true">
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_technical"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Technical"
+                    android:checked="true"
+                    style="@style/Widget.App.Chip" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_behavioral"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Behavioral"
+                    style="@style/Widget.App.Chip" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_system_design"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="System Design"
+                    style="@style/Widget.App.Chip" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_hr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="HR Review"
+                    style="@style/Widget.App.Chip" />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/chip_case"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Case Study"
+                    style="@style/Widget.App.Chip" />
+            </com.google.android.material.chip.ChipGroup>
+
+
+
+            <!-- Difficulty Slider -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Difficulty Level"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim" />
+
+            <com.google.android.material.slider.Slider
+                android:id="@+id/slider_difficulty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="8dp"
+                android:valueFrom="0.0"
+                android:valueTo="3.0"
+                android:stepSize="1.0" />
+
+            <TextView
+                android:id="@+id/tv_difficulty_label"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:gravity="center"
+                android:text="Intermediate"
+                android:textAppearance="@style/TextAppearance.App.Mono"
+                android:textColor="@color/primary" />
+
+            <!-- Question Stepper -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Number of Questions"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_question_dec"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:padding="0dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:insetLeft="0dp"
+                    android:insetRight="0dp"
+                    app:icon="@drawable/ic_minus"
+                    app:iconTint="@color/text_prim"
+                    app:iconGravity="textStart"
+                    app:iconSize="18dp"
+                    style="@style/Widget.App.Button.Outline" />
+
+                <TextView
+                    android:id="@+id/tv_question_count"
+                    android:layout_width="80dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textAppearance="@style/TextAppearance.App.Title"
+                    android:textColor="@color/text_prim" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_question_inc"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:padding="0dp"
+                    android:insetTop="0dp"
+                    android:insetBottom="0dp"
+                    android:insetLeft="0dp"
+                    android:insetRight="0dp"
+                    app:icon="@drawable/ic_add"
+                    app:iconTint="@color/text_prim"
+                    app:iconGravity="textStart"
+                    app:iconSize="18dp"
+                    style="@style/Widget.App.Button.Outline" />
+            </LinearLayout>
+
+            <!-- Job Description Alignment context (Optional Textarea) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Job Description Alignment (Optional)"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/input_layout_jd"
+                style="@style/Widget.App.TextInput.Outlined"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="24dp">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/et_job_description"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:minLines="3"
+                    android:maxLines="6"
+                    android:gravity="top|start"
+                    android:hint="Paste targeted job listing context..."
+                    android:inputType="textMultiLine" />
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <!-- Start Session Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_start_session"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/button_height"
+                android:text="Start Adaptive Session"
+                style="@style/Widget.App.Button.Primary" />
+
+            <!-- Divider -->
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/border_subtle"
+                android:layout_marginVertical="32dp" />
+
+            <!-- Practice History Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Practice History"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim"
+                android:layout_marginBottom="12dp" />
+
+            <!-- History RecyclerView -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_practice_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:scrollbars="none" />
+
+            <!-- Empty State Layout -->
+            <LinearLayout
+                android:id="@+id/layout_empty_history"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:padding="24dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_chart"
+                    app:tint="@color/text_muted" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="No past sessions found"
+                    android:textAppearance="@style/TextAppearance.App.BodySmall"
+                    android:textColor="@color/text_muted" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/layout_loading_overlay" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/homeFragment" android:icon="@drawable/selector_nav_home" android:title="Home" />
+    <item android:id="@+id/interviewSetupFragment" android:icon="@drawable/selector_nav_interview" android:title="Interview" />
+    <item android:id="@+id/quizHomeFragment" android:icon="@drawable/selector_nav_quiz" android:title="Quiz" />
+    <item android:id="@+id/jobsFragment" android:icon="@drawable/selector_nav_jobs" android:title="Jobs" />
+    <item android:id="@+id/profileFragment" android:icon="@drawable/selector_nav_profile" android:title="Profile" />
+</menu>

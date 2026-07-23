@@ -1,0 +1,344 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_void"
+    android:fitsSystemWindows="true">
+
+    <!-- Header layout -->
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/spacing_md"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/card_icon_size"
+            android:layout_height="@dimen/card_icon_size"
+            android:background="@drawable/bg_button_neo"
+            android:src="@drawable/ic_arrow_back"
+            android:scaleType="center"
+            android:contentDescription="Back"
+            app:tint="@color/text_muted" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_breadcrumb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="RESUME · AI ANALYSIS"
+                android:textAppearance="@style/TextAppearance.App.Label" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="AI Content Optimization"
+                android:textAppearance="@style/TextAppearance.App.Heading" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/header_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_subtle"
+        app:layout_constraintTop_toBottomOf="@id/layout_header" />
+
+    <!-- Placeholder/Shimmer-like Loading layout -->
+    <LinearLayout
+        android:id="@+id/layout_shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_md"
+        android:visibility="gone"
+        app:layout_constraintTop_toBottomOf="@id/header_divider"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- Shimmer card 1 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:background="@drawable/bg_dashed_upload"
+            android:layout_marginBottom="16dp"
+            android:alpha="0.6" />
+
+        <!-- Shimmer card 2 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/bg_dashed_upload"
+            android:layout_marginBottom="16dp"
+            android:alpha="0.6" />
+
+        <!-- Shimmer card 3 -->
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            android:background="@drawable/bg_dashed_upload"
+            android:alpha="0.6" />
+    </LinearLayout>
+
+    <!-- Main Content Layout -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_content"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/header_divider"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_md">
+
+            <!-- Metrics row (3 Cards horizontally scrollable/aligned) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="16dp">
+
+                <!-- Quantification Score -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="4dp"
+                    app:contentPadding="0dp"
+                    style="@style/Widget.App.Card">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingVertical="16dp"
+                        android:paddingHorizontal="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="QUANTIFICATION"
+                            android:textAppearance="@style/TextAppearance.App.Label"
+                            android:textSize="8sp"
+                            android:textColor="@color/text_muted" />
+                        <TextView
+                            android:id="@+id/tv_quantification_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="--"
+                            android:textAppearance="@style/TextAppearance.App.Title"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_prim" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Action Verbs -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:layout_weight="1"
+                    android:layout_marginHorizontal="2dp"
+                    app:contentPadding="0dp"
+                    style="@style/Widget.App.Card">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingVertical="16dp"
+                        android:paddingHorizontal="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="ACTION VERBS"
+                            android:textAppearance="@style/TextAppearance.App.Label"
+                            android:textSize="8sp"
+                            android:textColor="@color/text_muted" />
+                        <TextView
+                            android:id="@+id/tv_action_verb_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="--"
+                            android:textAppearance="@style/TextAppearance.App.Title"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_prim" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Seniority Level -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:minHeight="100dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="4dp"
+                    app:contentPadding="0dp"
+                    style="@style/Widget.App.Card">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:paddingVertical="16dp"
+                        android:paddingHorizontal="8dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="AI SENIORITY"
+                            android:textAppearance="@style/TextAppearance.App.Label"
+                            android:textSize="8sp"
+                            android:textColor="@color/text_muted" />
+                        <TextView
+                            android:id="@+id/tv_seniority_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="--"
+                            android:textAppearance="@style/TextAppearance.App.Body"
+                            android:textSize="10sp"
+                            android:textStyle="bold"
+                            android:maxLines="2"
+                            android:gravity="center"
+                            android:lineSpacingMultiplier="1.0"
+                            android:textColor="@color/text_prim" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+            </LinearLayout>
+
+            <!-- Compliance Concerns (Red Flags) Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_red_flags"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:visibility="gone"
+                app:cardCornerRadius="12dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/destructive"
+                app:cardBackgroundColor="#1A0A0A">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="COMPLIANCE CONCERNS (RED FLAGS)"
+                        android:textAppearance="@style/TextAppearance.App.Label"
+                        android:textColor="@color/destructive" />
+                    <TextView
+                        android:id="@+id/tv_red_flags_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textColor="#FEE2E2" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Actionable Recommendations Title -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:text="Actionable Recommendations"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim" />
+
+            <!-- Suggestions Accordion container -->
+            <LinearLayout
+                android:id="@+id/layout_suggestions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="16dp" />
+
+            <!-- Detected Content Strengths (Emerald theme) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_strengths"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#10B981"
+                app:cardBackgroundColor="#0A1F18">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="DETECTED CONTENT STRENGTHS"
+                        android:textAppearance="@style/TextAppearance.App.Label"
+                        android:textColor="#10B981" />
+                    <TextView
+                        android:id="@+id/tv_strengths_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textColor="#D1FAE5" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Areas For Compliance Refinement (Orange theme) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_gaps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                app:cardCornerRadius="12dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="#F59E0B"
+                app:cardBackgroundColor="#1F1505">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AREAS FOR COMPLIANCE REFINEMENT"
+                        android:textAppearance="@style/TextAppearance.App.Label"
+                        android:textColor="#F59E0B" />
+                    <TextView
+                        android:id="@+id/tv_gaps_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textColor="#FEF3C7" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

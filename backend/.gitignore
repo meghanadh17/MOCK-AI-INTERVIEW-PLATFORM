@@ -1,0 +1,40 @@
+# Local environment configuration
+.env
+.env.local
+.env.*.local
+
+# Python virtual environment
+venv/
+env/
+ENV/
+bin/
+lib/
+include/
+
+# Python compiled cache and tests
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.pip_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+
+# Databases
+*.db
+*.sqlite
+*.sqlite3
+
+# Logs
+*.log
+pip-log.txt
+
+# Media Uploads (Ignore actual uploads, but keep structure via .gitkeep)
+uploads/**/*
+!uploads/**/.gitkeep

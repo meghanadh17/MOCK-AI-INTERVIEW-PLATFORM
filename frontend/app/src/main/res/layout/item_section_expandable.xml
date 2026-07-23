@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    style="@style/Widget.App.Card">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <!-- Header Row -->
+        <LinearLayout
+            android:id="@+id/layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:clickable="true"
+            android:focusable="true">
+
+            <TextView
+                android:id="@+id/tv_section_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Work Experience"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_ai_enhance"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginEnd="8dp"
+                android:paddingHorizontal="6dp"
+                android:paddingVertical="0dp"
+                android:text="AI Enhance"
+                android:textSize="9sp"
+                android:textColor="@color/primary"
+                style="@style/Widget.App.Button.Outline"
+                app:icon="@drawable/ic_sparkles"
+                app:iconSize="11dp"
+                app:iconTint="@color/primary"
+                android:insetTop="0dp"
+                android:insetBottom="0dp" />
+
+            <ProgressBar
+                android:id="@+id/progress_ai_enhance"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="12dp"
+                android:indeterminate="true"
+                android:visibility="gone"
+                android:indeterminateTint="@color/primary" />
+
+            <ImageView
+                android:id="@+id/iv_expand"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_arrow_forward"
+                app:tint="@color/text_muted"
+                android:importantForAccessibility="no" />
+        </LinearLayout>
+
+        <!-- Divider Line (only visible when expanded) -->
+        <View
+            android:id="@+id/divider_line"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="8dp"
+            android:background="@color/border_subtle"
+            android:visibility="gone" />
+
+        <!-- Detail Content -->
+        <TextView
+            android:id="@+id/tv_section_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textAppearance="@style/TextAppearance.App.Body"
+            android:textColor="@color/text_sec"
+            android:visibility="gone" />
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

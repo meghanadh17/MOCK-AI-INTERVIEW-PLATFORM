@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="8dp">
+
+    <!-- Summary Tab Container -->
+    <LinearLayout
+        android:id="@+id/layout_summary_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- Narrative Summary -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.App.Card"
+            android:layout_marginBottom="12dp">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AI EXECUTIVE NARRATIVE"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_muted"
+                    android:layout_marginBottom="8dp" />
+                <TextView
+                    android:id="@+id/tv_tab_summary_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="AI Narrative summary is compiling..."
+                    android:textAppearance="@style/TextAppearance.App.Body"
+                    android:textColor="@color/text_prim" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Strengths / Improvements -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Strengths -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.App.Card"
+                android:layout_marginBottom="12dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="KEY STRENGTHS"
+                        android:textAppearance="@style/TextAppearance.App.Mono"
+                        android:textColor="@color/score_high"
+                        android:layout_marginBottom="8dp" />
+                    <TextView
+                        android:id="@+id/tv_tab_strengths"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• Strength details..."
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/text_sec" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Areas for Improvement -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.App.Card"
+                android:layout_marginBottom="12dp">
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="IMPROVEMENT AREAS"
+                        android:textAppearance="@style/TextAppearance.App.Mono"
+                        android:textColor="@color/score_mid"
+                        android:layout_marginBottom="8dp" />
+                    <TextView
+                        android:id="@+id/tv_tab_improvements"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="• Improvement details..."
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/text_sec" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- General Tab Container (containing the chart card and the detailed metrics list) -->
+    <LinearLayout
+        android:id="@+id/layout_general_tab"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Chart / Timeline Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_chart_container"
+            android:layout_width="match_parent"
+            android:layout_height="140dp"
+            style="@style/Widget.App.Card"
+            android:layout_marginBottom="12dp">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:padding="8dp">
+
+                <!-- Custom Timeline Chart View (for Gaze and Posture) -->
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/timeline_chart_view"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:visibility="gone" />
+
+                <!-- Segmented Timeline RecyclerView (for Emotion) -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_emotion_timeline"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:scrollbars="none"
+                    android:visibility="gone" />
+
+                <!-- Large speech summary metric (for Speech) -->
+                <TextView
+                    android:id="@+id/tv_chart_fallback"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="Timeline Chart Not Available"
+                    android:textAppearance="@style/TextAppearance.App.Mono"
+                    android:textColor="@color/text_muted" />
+            </FrameLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- Stats Section -->
+        <TextView
+            android:id="@+id/tv_detailed_metrics_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Detailed Metrics"
+            android:textAppearance="@style/TextAppearance.App.Title"
+            android:textColor="@color/text_prim"
+            android:layout_marginBottom="8dp" />
+
+        <!-- Grid / Container of stats -->
+        <LinearLayout
+            android:id="@+id/layout_stats_container"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </LinearLayout>
+
+</LinearLayout>

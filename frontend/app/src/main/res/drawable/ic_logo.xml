@@ -1,0 +1,37 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="100dp"
+    android:height="100dp"
+    android:viewportWidth="100"
+    android:viewportHeight="100">
+    <!-- White rounded background -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M 24,0 h 52 a 24,24 0 0 1 24,24 v 52 a 24,24 0 0 1 -24,24 h -52 a 24,24 0 0 1 -24,-24 v -52 a 24,24 0 0 1 24,-24 z" />
+    
+    <!-- Left Chevron Bracket (<) in black -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M 31 15 L 15 50 L 31 85 L 31 73 L 20 50 L 31 27 Z" />
+    
+    <!-- Right Chevron Bracket (>) in black -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M 69 15 L 85 50 L 69 85 L 69 73 L 80 50 L 69 27 Z" />
+        
+    <!-- Center Soundwave/ATS Scanner bars in black -->
+    <path
+        android:fillColor="#000000"
+        android:pathData="M 36,26 a 2,2 0 0 1 2,2 v 24 a 2,2 0 0 1 -2,2 a 2,2 0 0 1 -2,-2 v -24 a 2,2 0 0 1 2,-2 z" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M 43,36 a 2,2 0 0 1 2,2 v 24 a 2,2 0 0 1 -2,2 a 2,2 0 0 1 -2,-2 v -24 a 2,2 0 0 1 2,-2 z" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M 50,46 a 2,2 0 0 1 2,2 v 24 a 2,2 0 0 1 -2,2 a 2,2 0 0 1 -2,-2 v -24 a 2,2 0 0 1 2,-2 z" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M 57,36 a 2,2 0 0 1 2,2 v 24 a 2,2 0 0 1 -2,2 a 2,2 0 0 1 -2,-2 v -24 a 2,2 0 0 1 2,-2 z" />
+    <path
+        android:fillColor="#000000"
+        android:pathData="M 64,26 a 2,2 0 0 1 2,2 v 24 a 2,2 0 0 1 -2,2 a 2,2 0 0 1 -2,-2 v -24 a 2,2 0 0 1 2,-2 z" />
+</vector>

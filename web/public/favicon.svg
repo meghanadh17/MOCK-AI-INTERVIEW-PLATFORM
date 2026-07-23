@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <!-- White rounded background -->
+  <rect width="100" height="100" rx="24" fill="#FFFFFF" />
+  
+  <!-- Left Chevron Bracket (<) in black -->
+  <path d="M 31 15 L 15 50 L 31 85 L 31 73 L 20 50 L 31 27 Z" fill="#000000" />
+  
+  <!-- Right Chevron Bracket (>) in black -->
+  <path d="M 69 15 L 85 50 L 69 85 L 69 73 L 80 50 L 69 27 Z" fill="#000000" />
+  
+  <!-- Center Soundwave/ATS Scanner bars in black -->
+  <rect x="34" y="26" width="4" height="28" rx="2" fill="#000000" />
+  <rect x="41" y="36" width="4" height="28" rx="2" fill="#000000" />
+  <rect x="48" y="46" width="4" height="28" rx="2" fill="#000000" />
+  <rect x="55" y="36" width="4" height="28" rx="2" fill="#000000" />
+  <rect x="62" y="26" width="4" height="28" rx="2" fill="#000000" />
+</svg>

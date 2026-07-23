@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<animated-selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/selected"
+        android:state_checked="true"
+        android:drawable="@drawable/ic_jobs" />
+    <item
+        android:id="@+id/unselected"
+        android:drawable="@drawable/ic_jobs_animated" />
+    <transition
+        android:fromId="@id/unselected"
+        android:toId="@id/selected"
+        android:drawable="@drawable/avd_jobs_fill" />
+    <transition
+        android:fromId="@id/selected"
+        android:toId="@id/unselected"
+        android:drawable="@drawable/avd_jobs_clear" />
+</animated-selector>

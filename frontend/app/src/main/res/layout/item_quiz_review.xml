@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    style="@style/Widget.App.Card"
+    app:cardCornerRadius="12dp"
+    app:strokeColor="@color/border_def"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Header containing Q Num, Question text, and indicator icon -->
+        <LinearLayout
+            android:id="@+id/layout_header"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:padding="12dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackground">
+
+            <!-- Result icon badge -->
+            <TextView
+                android:id="@+id/tv_result_icon"
+                android:layout_width="28dp"
+                android:layout_height="28dp"
+                android:background="@drawable/bg_circle_badge"
+                android:gravity="center"
+                android:text="✓"
+                android:textAppearance="@style/TextAppearance.App.Mono"
+                android:textColor="#FFFFFF" />
+
+            <!-- Question text -->
+            <TextView
+                android:id="@+id/tv_question_text"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:text="Question text..."
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/iv_expand"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/ic_arrow_forward"
+                app:tint="@color/text_muted"
+                android:importantForAccessibility="no" />
+        </LinearLayout>
+
+        <!-- Expanded explanation and options section -->
+        <LinearLayout
+            android:id="@+id/layout_expanded"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="12dp"
+            android:paddingBottom="12dp"
+            android:visibility="gone">
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/border_subtle"
+                android:layout_marginBottom="12dp" />
+
+            <!-- Answers state details -->
+            <TextView
+                android:id="@+id/tv_chosen_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Your Answer: Option A"
+                android:textAppearance="@style/TextAppearance.App.BodySmall"
+                android:textColor="@color/text_sec" />
+
+            <TextView
+                android:id="@+id/tv_correct_answer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Correct Answer: Option A"
+                android:textAppearance="@style/TextAppearance.App.BodySmall"
+                android:textColor="@color/score_high" />
+
+            <!-- Neomorphic explanation box -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_input_dark"
+                android:orientation="vertical"
+                android:padding="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AI Explanation"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/color_quiz"
+                    android:textSize="10sp" />
+
+                <TextView
+                    android:id="@+id/tv_explanation"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Explanation description goes here..."
+                    android:textAppearance="@style/TextAppearance.App.BodySmall"
+                    android:textColor="@color/text_sec"
+                    android:lineSpacingMultiplier="1.3" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

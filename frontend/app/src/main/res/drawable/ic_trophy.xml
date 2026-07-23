@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Main Cup Body, Stem and Base -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M18,2 H6 v3 c0,2.65 1.72,4.9 4,5.7 v4.3 H8 v2 h8 v-2 h-2 v-4.3 c2.28,-0.8 4,-3.05 4,-5.7 V2 z" />
+    <!-- Left Handle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M6,4 H3.5 C2.12,4 1,5.12 1,6.5 v1 C1,8.88 2.12,10 3.5,10 H6 v-1.5 H3.5 C3.22,8.5 3,8.28 3,8 v-0.5 C3,7.22 3.22,7 3.5,7 H6 Z" />
+    <!-- Right Handle -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M18,4 h2.5 c1.38,0 2.5,1.12 2.5,2.5 v1 c0,1.38 -1.12,2.5 -2.5,2.5 H18 v-1.5 h2.5 c0.28,0 0.5,-0.22 0.5,-0.5 v-0.5 c0,-0.28 -0.22,-0.5 -0.5,-0.5 H18 Z" />
+</vector>

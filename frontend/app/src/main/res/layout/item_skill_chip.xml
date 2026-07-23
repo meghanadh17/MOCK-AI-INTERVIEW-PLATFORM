@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    app:cardCornerRadius="@dimen/radius_md"
+    app:cardElevation="0dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/border_def"
+    app:cardBackgroundColor="#1F1F2E">
+
+    <TextView
+        android:id="@+id/tv_skill_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="4dp"
+        android:fontFamily="@font/ibm_plex_mono_regular"
+        android:textSize="11sp"
+        android:textAllCaps="true"
+        android:textColor="@color/text_prim" />
+
+</com.google.android.material.card.MaterialCardView>

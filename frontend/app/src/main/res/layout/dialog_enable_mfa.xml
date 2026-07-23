@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/bg_surface"
+    android:padding="24dp">
+
+    <!-- Handle indicator for bottom sheet -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@color/border_subtle" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Enable MFA"
+        android:textAppearance="@style/TextAppearance.App.Title"
+        android:textColor="@color/text_prim"
+        android:layout_marginBottom="8dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Scan this QR code with Google Authenticator or Microsoft Authenticator to link your account."
+        android:textAppearance="@style/TextAppearance.App.BodySmall"
+        android:textColor="@color/text_sec"
+        android:layout_marginBottom="16dp" />
+
+    <!-- QR code image -->
+    <ImageView
+        android:id="@+id/iv_qr_code"
+        android:layout_width="160dp"
+        android:layout_height="160dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@color/white_05"
+        android:padding="8dp"
+        android:importantForAccessibility="no" />
+
+    <!-- Copyable secret key -->
+    <TextView
+        android:id="@+id/tv_secret_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="SECRET KEY"
+        android:textAppearance="@style/TextAppearance.App.Label"
+        android:textColor="@color/text_muted"
+        android:textSize="9sp" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/bg_input_dark"
+        android:padding="12dp">
+
+        <TextView
+            android:id="@+id/tv_secret_key"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="XXXX-XXXX"
+            android:fontFamily="@font/ibm_plex_mono_bold"
+            android:textColor="@color/primary"
+            android:textSize="12sp" />
+
+        <ImageButton
+            android:id="@+id/btn_copy_secret"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_share"
+            android:scaleType="centerInside"
+            app:tint="@color/text_sec"
+            android:contentDescription="Copy secret key" />
+    </LinearLayout>
+
+    <!-- OTP verification input -->
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="ENTER VERIFICATION CODE"
+        android:textAppearance="@style/TextAppearance.App.Label"
+        android:textColor="@color/text_muted"
+        android:textSize="9sp"
+        android:layout_marginBottom="8dp" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/input_layout_otp"
+        style="@style/Widget.App.TextInput.Outlined"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp">
+
+        <EditText
+            android:id="@+id/et_otp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="6-digit authenticator code"
+            android:inputType="number"
+            android:maxLength="6"
+            android:textAppearance="@style/TextAppearance.App.Body" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Verify Button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_verify_mfa"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:text="Verify &amp; Enable"
+        style="@style/Widget.App.Button.Zinc" />
+
+</LinearLayout>

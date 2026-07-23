@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--
+        Carbon Void / Zinc Monochrome Palette
+        Mirrors web/src/index.css :root tokens exactly
+    -->
+
+    <!-- == Background Scale == -->
+    <color name="bg_void">#030507</color>
+    <color name="bg_base">#09090B</color>
+    <color name="bg_surface">#040406</color>
+    <color name="bg_elevated">#18181B</color>
+    <color name="bg_overlay">#1C1C21</color>
+    <color name="bg_muted">#27272A</color>
+    <color name="bg_subtle">#3F3F46</color>
+
+    <!-- == Text Scale == -->
+    <color name="text_prim">#FAFAFA</color>
+    <color name="text_sec">#A1A1AA</color>
+    <color name="text_muted">#71717A</color>
+    <color name="text_disabled">#3F3F46</color>
+
+    <!-- == Border Scale == -->
+    <color name="border_subtle">#1A1A1F</color>
+    <color name="border_def">#27272A</color>
+    <color name="border_strong">#3F3F46</color>
+    <color name="border_accent">#52525B</color>
+
+    <!-- == ShadcnUI Semantic Slots == -->
+    <color name="background">#030507</color>
+    <color name="foreground">#FAFAFA</color>
+    <color name="card">#040406</color>
+    <color name="card_foreground">#FAFAFA</color>
+    <color name="popover">#1C1C21</color>
+    <color name="popover_foreground">#FAFAFA</color>
+    <color name="primary">#FAFAFA</color>
+    <color name="primary_foreground">#09090B</color>
+    <color name="secondary">#18181B</color>
+    <color name="secondary_foreground">#A1A1AA</color>
+    <color name="muted">#27272A</color>
+    <color name="muted_foreground">#71717A</color>
+    <color name="accent">#27272A</color>
+    <color name="accent_foreground">#FAFAFA</color>
+    <color name="destructive">#EF4444</color>
+    <color name="destructive_foreground">#FAFAFA</color>
+    <color name="border">#27272A</color>
+    <color name="input">#09090B</color>
+    <color name="ring">#52525B</color>
+
+    <!-- == Module Accent Colors == -->
+    <color name="color_auth">#E4E4E7</color>
+    <color name="color_interview">#FAFAFA</color>
+    <color name="color_video">#D4D4D8</color>
+    <color name="color_resume">#A1A1AA</color>
+    <color name="color_quiz">#F4F4F5</color>
+    <color name="color_jobs">#E4E4E7</color>
+    <color name="color_sessions">#71717A</color>
+    <color name="color_profile">#52525B</color>
+
+    <!-- == Semantic Score Badge Colors == -->
+    <color name="score_high">#10B981</color>
+    <color name="score_high_bg">#14352A</color>
+    <color name="score_mid">#F59E0B</color>
+    <color name="score_mid_bg">#3D2E0A</color>
+    <color name="score_low">#EF4444</color>
+    <color name="score_low_bg">#3B1414</color>
+
+    <!-- == Neomorphic Shadow Helpers == -->
+    <color name="neo_shadow_dark">#000000</color>
+    <color name="neo_shadow_light">#0A0A0A</color>
+    <color name="neo_highlight">#14141A</color>
+    <color name="neo_top_edge">#1E1E24</color>
+
+    <!-- == Ripple / Touch == -->
+    <color name="ripple_dark">#1AFFFFFF</color>
+    <color name="ripple_primary">#336366F1</color>
+
+    <!-- == Transparency Overlays == -->
+    <color name="overlay_50">#80030507</color>
+    <color name="overlay_80">#CC030507</color>
+    <color name="white_03">#08FFFFFF</color>
+    <color name="white_05">#0DFFFFFF</color>
+    <color name="white_08">#14FFFFFF</color>
+    <color name="white_10">#1AFFFFFF</color>
+</resources>

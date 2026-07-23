@@ -1,0 +1,338 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fillViewport="true"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Resume Overview Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.App.Card"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resume Overview"
+                    android:textAppearance="@style/TextAppearance.App.Title"
+                    android:textColor="@color/text_prim" />
+
+                <TextView
+                    android:id="@+id/tv_overview_summary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Your resume has been parsed successfully. Check the sections below to view the detailed ATS compliance audit."
+                    android:textAppearance="@style/TextAppearance.App.Body"
+                    android:textColor="@color/text_sec" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ATS COMPLIANCE AUDIT Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_ats_audit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.App.Card"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ATS COMPLIANCE AUDIT"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_prim"
+                    android:layout_marginBottom="16dp" />
+
+                <!-- Formatting & Layout -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Formatting &amp; Layout"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/text_sec" />
+                    <TextView
+                        android:id="@+id/tv_formatting_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="80%"
+                        android:textAppearance="@style/TextAppearance.App.Mono"
+                        android:textColor="@color/text_prim"
+                        android:textSize="11sp" />
+                </LinearLayout>
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progress_formatting"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:trackColor="@color/bg_muted"
+                    app:indicatorColor="@color/score_high"
+                    app:trackCornerRadius="4dp"
+                    app:trackThickness="6dp" />
+
+                <!-- Keyword Coverage -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Keyword Coverage"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/text_sec" />
+                    <TextView
+                        android:id="@+id/tv_keywords_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="70%"
+                        android:textAppearance="@style/TextAppearance.App.Mono"
+                        android:textColor="@color/text_prim"
+                        android:textSize="11sp" />
+                </LinearLayout>
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progress_keywords"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:trackColor="@color/bg_muted"
+                    app:indicatorColor="@color/score_high"
+                    app:trackCornerRadius="4dp"
+                    app:trackThickness="6dp" />
+
+                <!-- Section Checkpoints -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Section Checkpoints"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/text_sec" />
+                    <TextView
+                        android:id="@+id/tv_sections_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="90%"
+                        android:textAppearance="@style/TextAppearance.App.Mono"
+                        android:textColor="@color/text_prim"
+                        android:textSize="11sp" />
+                </LinearLayout>
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progress_sections"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:trackColor="@color/bg_muted"
+                    app:indicatorColor="@color/score_high"
+                    app:trackCornerRadius="4dp"
+                    app:trackThickness="6dp" />
+
+                <!-- Readability Score -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="4dp">
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Readability Score"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/text_sec" />
+                    <TextView
+                        android:id="@+id/tv_readability_value"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="75%"
+                        android:textAppearance="@style/TextAppearance.App.Mono"
+                        android:textColor="@color/text_prim"
+                        android:textSize="11sp" />
+                </LinearLayout>
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/progress_readability"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    app:trackColor="@color/bg_muted"
+                    app:indicatorColor="@color/score_high"
+                    app:trackCornerRadius="4dp"
+                    app:trackThickness="6dp" />
+
+                <!-- Keywords Found -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="KEYWORDS IDENTIFIED"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_muted"
+                    android:layout_marginBottom="8dp" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_keywords_found"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    app:itemSpacing="6dp"
+                    app:lineSpacing="6dp" />
+
+                <!-- Keywords Missing -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="MISSING TARGET KEYWORDS"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_muted"
+                    android:layout_marginBottom="8dp" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_keywords_missing"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:itemSpacing="6dp"
+                    app:lineSpacing="6dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- SUITABLE JOB MATCHES Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_job_matches"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.App.Card"
+            android:layout_marginBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SUITABLE JOB MATCHES"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_prim"
+                    android:layout_marginBottom="12dp" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/chip_group_job_matches"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:itemSpacing="6dp"
+                    app:lineSpacing="6dp" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- IDENTIFIED STRENGTHS Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.App.Card"
+            android:layout_marginBottom="16dp"
+            app:strokeColor="#10B981"
+            app:cardBackgroundColor="#05120E">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="IDENTIFIED STRENGTHS"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="#10B981"
+                    android:layout_marginBottom="12dp" />
+
+                <LinearLayout
+                    android:id="@+id/layout_strengths_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- ATS DISCREPANCIES & GAPS Card -->
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/Widget.App.Card"
+            android:layout_marginBottom="16dp"
+            app:strokeColor="#F59E0B"
+            app:cardBackgroundColor="#120A05">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="ATS DISCREPANCIES &amp; GAPS"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="#F59E0B"
+                    android:layout_marginBottom="12dp" />
+
+                <LinearLayout
+                    android:id="@+id/layout_gaps_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- CTA Action Button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_view_analysis"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/button_height"
+            android:text="View AI Insights &amp; Suggestions"
+            style="@style/Widget.App.Button.Primary"
+            app:icon="@drawable/ic_sparkles" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/loading_overlay"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E60A0A0E"
+    android:clickable="true"
+    android:focusable="true"
+    android:elevation="100dp"
+    android:visibility="gone">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:padding="24dp">
+
+        <FrameLayout
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginBottom="24dp">
+
+            <ProgressBar
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:indeterminate="true"
+                android:indeterminateTint="@color/primary" />
+
+            <ImageView
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_gravity="center"
+                android:src="@drawable/ic_logo"
+                android:contentDescription="MockAI Logo" />
+
+        </FrameLayout>
+
+        <TextView
+            android:id="@+id/tv_loading_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="MockAI"
+            android:textAppearance="@style/TextAppearance.App.Title"
+            android:textColor="@color/text_prim"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_loading_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center"
+            android:text="Please wait..."
+            android:textAppearance="@style/TextAppearance.App.BodySmall"
+            android:textColor="@color/text_muted" />
+
+    </LinearLayout>
+
+</FrameLayout>

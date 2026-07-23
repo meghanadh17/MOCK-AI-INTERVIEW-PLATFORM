@@ -1,0 +1,664 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_void"
+    android:fitsSystemWindows="true">
+
+    <!-- Header area -->
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingTop="@dimen/spacing_md"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+            <TextView
+                android:id="@+id/tv_breadcrumb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="QUIZ · ARENA"
+                android:textAppearance="@style/TextAppearance.App.Label" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:text="Quiz Arena"
+                android:textAppearance="@style/TextAppearance.App.Heading" />
+        </LinearLayout>
+
+        <!-- Leaderboard button -->
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_view_leaderboard"
+            android:layout_width="wrap_content"
+            android:layout_height="38dp"
+            android:text="Leaderboard"
+            style="@style/Widget.App.Button.Ghost"
+            android:textColor="#818CF8"
+            android:textSize="11sp"
+            app:icon="@drawable/ic_trophy"
+            app:iconTint="#818CF8"
+            android:paddingHorizontal="10dp" />
+    </LinearLayout>
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tab_layout"
+        android:layout_width="match_parent"
+        android:layout_height="46dp"
+        android:layout_marginTop="8dp"
+        android:background="@android:color/transparent"
+        app:tabGravity="fill"
+        app:tabMode="fixed"
+        app:tabIndicatorColor="#818CF8"
+        app:tabSelectedTextColor="#FAFAFA"
+        app:tabTextColor="#71717A"
+        app:layout_constraintTop_toBottomOf="@id/layout_header" />
+
+    <View
+        android:id="@+id/header_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_subtle"
+        app:layout_constraintTop_toBottomOf="@id/tab_layout" />
+
+    <!-- Scrollable content area -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/header_divider"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingHorizontal="@dimen/spacing_md"
+            android:paddingTop="12dp"
+            android:paddingBottom="40dp">
+
+            <!-- Horizontal Scroll 4-card Stats Bar -->
+            <HorizontalScrollView
+                android:id="@+id/scroll_stats"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Streak Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:layout_marginEnd="8dp"
+                        style="@style/Widget.App.Card"
+                        app:cardBackgroundColor="@color/bg_surface"
+                        app:strokeColor="@color/border_subtle"
+                        app:strokeWidth="1dp"
+                        app:contentPadding="0dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="8dp">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_medal"
+                                app:tint="#EF4444"
+                                android:layout_marginEnd="8dp" />
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="STREAK"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="8sp"
+                                    android:textStyle="bold"
+                                    android:singleLine="true"
+                                    android:ellipsize="end" />
+                                <TextView
+                                    android:id="@+id/tv_stat_streak"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="0 days"
+                                    android:textColor="@color/text_prim"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="2dp"
+                                    android:singleLine="true"
+                                    android:ellipsize="end" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Avg Score Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:layout_marginEnd="8dp"
+                        style="@style/Widget.App.Card"
+                        app:cardBackgroundColor="@color/bg_surface"
+                        app:strokeColor="@color/border_subtle"
+                        app:strokeWidth="1dp"
+                        app:contentPadding="0dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="8dp">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_chart"
+                                app:tint="#10B981"
+                                android:layout_marginEnd="8dp" />
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="AVG SCORE"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="8sp"
+                                    android:textStyle="bold"
+                                    android:singleLine="true"
+                                    android:ellipsize="end" />
+                                <TextView
+                                    android:id="@+id/tv_stat_avg"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="0%"
+                                    android:textColor="@color/text_prim"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="2dp"
+                                    android:singleLine="true"
+                                    android:ellipsize="end" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Practice Time Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        android:layout_marginEnd="8dp"
+                        style="@style/Widget.App.Card"
+                        app:cardBackgroundColor="@color/bg_surface"
+                        app:strokeColor="@color/border_subtle"
+                        app:strokeWidth="1dp"
+                        app:contentPadding="0dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="8dp">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_timer"
+                                app:tint="#818CF8"
+                                android:layout_marginEnd="8dp" />
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="PRACTICE"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="8sp"
+                                    android:textStyle="bold"
+                                    android:singleLine="true"
+                                    android:ellipsize="end" />
+                                <TextView
+                                    android:id="@+id/tv_stat_time"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="0m"
+                                    android:textColor="@color/text_prim"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="2dp"
+                                    android:singleLine="true"
+                                    android:ellipsize="end" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Global Rank Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="130dp"
+                        android:layout_height="70dp"
+                        style="@style/Widget.App.Card"
+                        app:cardBackgroundColor="@color/bg_surface"
+                        app:strokeColor="@color/border_subtle"
+                        app:strokeWidth="1dp"
+                        app:contentPadding="0dp">
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="8dp">
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:src="@drawable/ic_trophy"
+                                app:tint="#F59E0B"
+                                android:layout_marginEnd="8dp" />
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="GLOBAL RANK"
+                                    android:textColor="@color/text_muted"
+                                    android:textSize="8sp"
+                                    android:textStyle="bold"
+                                    android:singleLine="true"
+                                    android:ellipsize="end" />
+                                <TextView
+                                    android:id="@+id/tv_stat_rank"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Unranked"
+                                    android:textColor="@color/text_prim"
+                                    android:textSize="12sp"
+                                    android:textStyle="bold"
+                                    android:layout_marginTop="2dp"
+                                    android:singleLine="true"
+                                    android:ellipsize="end" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- Layout toggles based on selected tab -->
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <!-- 1. BROWSE TAB VIEW -->
+                <LinearLayout
+                    android:id="@+id/layout_tab_browse"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="visible">
+
+                    <!-- Search Input -->
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_search"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.App.TextInput.Outlined"
+                        android:hint="Search quizzes by topic..."
+                        app:startIconDrawable="@drawable/ic_search"
+                        app:startIconTint="@color/text_muted">
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_search"
+                            android:layout_width="match_parent"
+                            android:layout_height="52dp"
+                            android:textColor="@color/text_prim"
+                            android:textSize="14sp"
+                            android:inputType="text" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Filter Chips Row -->
+                    <HorizontalScrollView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="12dp"
+                        android:scrollbars="none">
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chip_group_difficulty"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            app:singleSelection="true"
+                            app:chipSpacingHorizontal="6dp">
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip_all"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="All"
+                                android:checked="true"
+                                style="@style/Widget.MaterialComponents.Chip.Choice" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip_easy"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Easy"
+                                style="@style/Widget.MaterialComponents.Chip.Choice" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip_medium"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Medium"
+                                style="@style/Widget.MaterialComponents.Chip.Choice" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chip_hard"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Hard"
+                                style="@style/Widget.MaterialComponents.Chip.Choice" />
+                        </com.google.android.material.chip.ChipGroup>
+                    </HorizontalScrollView>
+
+                    <!-- RecyclerView -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_quizzes"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never" />
+                </LinearLayout>
+
+                <!-- 2. AI GENERATOR TAB VIEW -->
+                <LinearLayout
+                    android:id="@+id/layout_tab_generator"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <!-- Custom Form Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.App.Card"
+                        app:cardBackgroundColor="@color/bg_surface"
+                        app:strokeColor="@color/border_def"
+                        app:strokeWidth="1dp"
+                        android:layout_marginBottom="16dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:layout_marginBottom="4dp">
+
+                                <ImageView
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:src="@drawable/ic_sparkles"
+                                    app:tint="#818CF8" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:text="AI Adaptive Quiz Generator"
+                                    android:textAppearance="@style/TextAppearance.App.Title"
+                                    android:textColor="@color/text_prim" />
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="CONSTRUCT NEW ADAPTIVE QUIZ SESSIONS"
+                                android:textColor="@color/text_muted"
+                                android:textSize="9sp"
+                                android:textAppearance="@style/TextAppearance.App.Label"
+                                android:layout_marginBottom="16dp" />
+
+                            <!-- Topic Field -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Technology Topic"
+                                android:textColor="@color/text_prim"
+                                android:textSize="11sp"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="6dp" />
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:id="@+id/til_gen_topic"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                style="@style/Widget.App.TextInput.Outlined"
+                                android:hint="e.g. Docker, Redux, System Architecture"
+                                android:layout_marginBottom="16dp">
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/et_gen_topic"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="52dp"
+                                    android:textColor="@color/text_prim"
+                                    android:textSize="14sp"
+                                    android:inputType="text" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="horizontal"
+                                android:layout_marginBottom="16dp">
+
+                                <!-- Difficulty Spinner Column -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:layout_marginEnd="8dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Difficulty Level"
+                                        android:textColor="@color/text_prim"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold"
+                                        android:layout_marginBottom="6dp" />
+
+                                    <LinearLayout
+                                        android:id="@+id/select_difficulty_container"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="44dp"
+                                        android:background="@drawable/bg_input_dark"
+                                        android:orientation="horizontal"
+                                        android:gravity="center_vertical"
+                                        android:paddingHorizontal="12dp"
+                                        android:clickable="true"
+                                        android:focusable="true">
+
+                                        <TextView
+                                            android:id="@+id/tv_selected_difficulty"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="medium"
+                                            android:textAppearance="@style/TextAppearance.App.Body"
+                                            android:textColor="@color/text_prim"
+                                            android:textSize="13sp" />
+
+                                        <ImageView
+                                            android:layout_width="16dp"
+                                            android:layout_height="16dp"
+                                            android:src="@drawable/ic_arrow_forward"
+                                            android:rotation="90"
+                                            app:tint="@color/text_muted" />
+                                    </LinearLayout>
+                                </LinearLayout>
+
+                                <!-- Question Count Spinner Column -->
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical"
+                                    android:layout_marginStart="8dp">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Questions Count"
+                                        android:textColor="@color/text_prim"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold"
+                                        android:layout_marginBottom="6dp" />
+
+                                    <LinearLayout
+                                        android:id="@+id/select_count_container"
+                                        android:layout_width="match_parent"
+                                        android:layout_height="44dp"
+                                        android:background="@drawable/bg_input_dark"
+                                        android:orientation="horizontal"
+                                        android:gravity="center_vertical"
+                                        android:paddingHorizontal="12dp"
+                                        android:clickable="true"
+                                        android:focusable="true">
+
+                                        <TextView
+                                            android:id="@+id/tv_selected_count"
+                                            android:layout_width="0dp"
+                                            android:layout_height="wrap_content"
+                                            android:layout_weight="1"
+                                            android:text="10 Questions"
+                                            android:textAppearance="@style/TextAppearance.App.Body"
+                                            android:textColor="@color/text_prim"
+                                            android:textSize="13sp" />
+
+                                        <ImageView
+                                            android:layout_width="16dp"
+                                            android:layout_height="16dp"
+                                            android:src="@drawable/ic_arrow_forward"
+                                            android:rotation="90"
+                                            app:tint="@color/text_muted" />
+                                    </LinearLayout>
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <!-- Submit Button -->
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btn_generate_submit"
+                                android:layout_width="match_parent"
+                                android:layout_height="52dp"
+                                android:text="Generate Adaptive Quiz →"
+                                android:textStyle="bold"
+                                android:textAllCaps="false"
+                                app:icon="@drawable/ic_sparkles"
+                                app:iconTint="@color/bg_void"
+                                app:iconGravity="textStart"
+                                style="@style/Widget.App.Button.Primary"
+                                android:backgroundTint="#FFFFFF"
+                                android:textColor="@color/bg_void" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Popular Topics Card -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.App.Card"
+                        app:cardBackgroundColor="@color/bg_surface"
+                        app:strokeColor="@color/border_def"
+                        app:strokeWidth="1dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="16dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Popular Topics"
+                                android:textColor="@color/text_prim"
+                                android:textSize="12sp"
+                                android:textStyle="bold"
+                                android:layout_marginBottom="10dp" />
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/chip_group_popular"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                app:chipSpacing="6dp" />
+                        </LinearLayout>
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <!-- 3. RECAP HISTORY TAB VIEW -->
+                <LinearLayout
+                    android:id="@+id/layout_tab_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:visibility="gone">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false"
+                        android:overScrollMode="never" />
+
+                    <TextView
+                        android:id="@+id/tv_empty_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="120dp"
+                        android:gravity="center"
+                        android:text="No recap history found"
+                        android:textAppearance="@style/TextAppearance.App.BodySmall"
+                        android:textColor="@color/text_muted"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </FrameLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Loading overlay -->
+    <include layout="@layout/layout_loading_overlay" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

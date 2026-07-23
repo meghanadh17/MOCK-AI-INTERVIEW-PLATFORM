@@ -1,0 +1,495 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_void"
+    android:fitsSystemWindows="true">
+
+    <!-- Header area -->
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="@dimen/spacing_md"
+        android:paddingTop="@dimen/spacing_md"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="QUIZ · LEADERBOARD"
+            android:textAppearance="@style/TextAppearance.App.Label" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_xs"
+            android:text="Leaderboard"
+            android:textAppearance="@style/TextAppearance.App.Heading" />
+
+        <!-- TabLayout -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tab_layout"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@android:color/transparent"
+            app:tabGravity="fill"
+            app:tabMode="fixed"
+            app:tabIndicatorColor="#818CF8"
+            app:tabSelectedTextColor="#FAFAFA"
+            app:tabTextColor="#71717A" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/header_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_subtle"
+        app:layout_constraintTop_toBottomOf="@id/layout_header" />
+
+    <!-- Scrollable content area -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/header_divider"
+        app:layout_constraintBottom_toTopOf="@id/card_own_rank">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_md">
+
+            <!-- Rank Summary Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_rank_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.App.Card"
+                app:cardBackgroundColor="@color/bg_surface"
+                app:strokeColor="@color/border_subtle"
+                app:strokeWidth="1dp"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:padding="16dp"
+                    android:weightSum="3">
+
+                    <!-- Your Rank Column -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="YOUR RANK"
+                            android:textColor="@color/text_muted"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_summary_rank"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Unranked"
+                            android:textColor="@color/text_prim"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Divider 1 -->
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="24dp"
+                        android:background="@color/border_subtle" />
+
+                    <!-- Best Score Column -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="BEST SCORE"
+                            android:textColor="@color/text_muted"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_summary_best_score"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="—"
+                            android:textColor="@color/text_prim"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Divider 2 -->
+                    <View
+                        android:layout_width="1dp"
+                        android:layout_height="24dp"
+                        android:background="@color/border_subtle" />
+
+                    <!-- Percentile Column -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:gravity="center">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="PERCENTILE"
+                            android:textColor="@color/text_muted"
+                            android:textSize="9sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_summary_percentile"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="0.0%"
+                            android:textColor="#818CF8"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Podium View Top 3 -->
+            <LinearLayout
+                android:id="@+id/layout_podium"
+                android:layout_width="match_parent"
+                android:layout_height="250dp"
+                android:orientation="horizontal"
+                android:gravity="bottom"
+                android:weightSum="3"
+                android:layout_marginBottom="16dp"
+                android:layout_marginTop="8dp">
+
+                <!-- 2nd Place (Left) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_marginEnd="4dp">
+
+                    <!-- 2nd Place Avatar -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        app:cardCornerRadius="24dp"
+                        app:strokeColor="#A1A1AA"
+                        app:strokeWidth="1.5dp"
+                        app:cardBackgroundColor="#1F1F26"
+                        app:cardElevation="2dp">
+                        <TextView
+                            android:id="@+id/tv_podium_avatar_2"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="#A1A1AA"
+                            android:textStyle="bold"
+                            android:textSize="14sp"
+                            android:text="--" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 2nd Place Name -->
+                    <TextView
+                        android:id="@+id/tv_podium_name_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center"
+                        android:textColor="@color/text_prim"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:text="--" />
+
+                    <!-- 2nd Place Score -->
+                    <TextView
+                        android:id="@+id/tv_podium_score_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center"
+                        android:textColor="#A1A1AA"
+                        android:textSize="11sp"
+                        android:textAppearance="@style/TextAppearance.App.Mono"
+                        android:text="--" />
+
+                    <!-- 2nd Place Podium block -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_podium_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="70dp"
+                        android:layout_marginTop="8dp"
+                        style="@style/Widget.App.Card"
+                        app:cardBackgroundColor="#1A1A24"
+                        app:strokeColor="#A1A1AA"
+                        app:strokeWidth="1dp"
+                        app:cardCornerRadius="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="2nd"
+                            android:textColor="#A1A1AA"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <!-- 1st Place (Center elevated) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_marginHorizontal="2dp"
+                    android:elevation="4dp">
+
+                    <!-- Crown Image -->
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/ic_crown"
+                        android:layout_marginBottom="2dp"
+                        android:importantForAccessibility="no" />
+
+                    <!-- 1st Place Avatar -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="56dp"
+                        android:layout_height="56dp"
+                        app:cardCornerRadius="28dp"
+                        app:strokeColor="#F59E0B"
+                        app:strokeWidth="2dp"
+                        app:cardBackgroundColor="#2D2214"
+                        app:cardElevation="3dp">
+                        <TextView
+                            android:id="@+id/tv_podium_avatar_1"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="#F59E0B"
+                            android:textStyle="bold"
+                            android:textSize="16sp"
+                            android:text="--" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 1st Place Name -->
+                    <TextView
+                        android:id="@+id/tv_podium_name_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center"
+                        android:textColor="@color/text_prim"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:text="--" />
+
+                    <!-- 1st Place Score -->
+                    <TextView
+                        android:id="@+id/tv_podium_score_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center"
+                        android:textColor="#F59E0B"
+                        android:textSize="12sp"
+                        android:textAppearance="@style/TextAppearance.App.Mono"
+                        android:text="--" />
+
+                    <!-- 1st Place Podium block -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_podium_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="100dp"
+                        android:layout_marginTop="8dp"
+                        style="@style/Widget.App.Card"
+                        app:cardBackgroundColor="#2A2012"
+                        app:strokeColor="#F59E0B"
+                        app:strokeWidth="1.2dp"
+                        app:cardCornerRadius="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="1st"
+                            android:textColor="#F59E0B"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+
+                <!-- 3rd Place (Right) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:gravity="bottom|center_horizontal"
+                    android:orientation="vertical"
+                    android:layout_marginStart="4dp">
+
+                    <!-- 3rd Place Avatar -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        app:cardCornerRadius="22dp"
+                        app:strokeColor="#CD7F32"
+                        app:strokeWidth="1.5dp"
+                        app:cardBackgroundColor="#1F1512"
+                        app:cardElevation="1dp">
+                        <TextView
+                            android:id="@+id/tv_podium_avatar_3"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:textColor="#CD7F32"
+                            android:textStyle="bold"
+                            android:textSize="13sp"
+                            android:text="--" />
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- 3rd Place Name -->
+                    <TextView
+                        android:id="@+id/tv_podium_name_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:gravity="center"
+                        android:textColor="@color/text_prim"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        android:singleLine="true"
+                        android:ellipsize="end"
+                        android:text="--" />
+
+                    <!-- 3rd Place Score -->
+                    <TextView
+                        android:id="@+id/tv_podium_score_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:gravity="center"
+                        android:textColor="#CD7F32"
+                        android:textSize="10sp"
+                        android:textAppearance="@style/TextAppearance.App.Mono"
+                        android:text="--" />
+
+                    <!-- 3rd Place Podium block -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/card_podium_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="55dp"
+                        android:layout_marginTop="8dp"
+                        style="@style/Widget.App.Card"
+                        app:cardBackgroundColor="#1A1310"
+                        app:strokeColor="#CD7F32"
+                        app:strokeWidth="1dp"
+                        app:cardCornerRadius="10dp">
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="3rd"
+                            android:textColor="#CD7F32"
+                            android:textSize="14sp"
+                            android:textStyle="bold" />
+                    </com.google.android.material.card.MaterialCardView>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Leaderboard recyclerView list -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rv_leaderboard"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Pinned own rank banner at bottom -->
+    <com.google.android.material.card.MaterialCardView
+        android:id="@+id/card_own_rank"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        app:cardCornerRadius="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="@color/border_def"
+        app:cardBackgroundColor="#0D0D14"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:paddingHorizontal="16dp">
+
+            <TextView
+                android:id="@+id/tv_own_rank"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/bg_circle_badge"
+                android:gravity="center"
+                android:text="--"
+                android:textAppearance="@style/TextAppearance.App.Mono"
+                android:textColor="#FFFFFF" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="12dp"
+                android:text="Your Standing (You)"
+                android:textAppearance="@style/TextAppearance.App.Title"
+                android:textColor="@color/text_prim" />
+
+            <TextView
+                android:id="@+id/tv_own_score"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="--"
+                android:textAppearance="@style/TextAppearance.App.Mono"
+                android:textColor="#818CF8" />
+        </LinearLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <include layout="@layout/layout_loading_overlay" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

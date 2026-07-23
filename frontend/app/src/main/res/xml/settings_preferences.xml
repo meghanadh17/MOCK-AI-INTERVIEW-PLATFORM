@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <PreferenceCategory android:title="Appearance">
+        <ListPreference
+            android:key="theme_mode"
+            android:title="Theme"
+            android:summary="%s"
+            android:defaultValue="dark"
+            android:icon="@drawable/ic_settings_theme_wrapper"
+            android:entries="@array/theme_entries"
+            android:entryValues="@array/theme_values" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Notifications">
+        <SwitchPreferenceCompat
+            android:key="push_notifications"
+            android:title="Push Notifications"
+            android:summary="Enable real-time mock evaluation alerts"
+            android:icon="@drawable/ic_settings_push_wrapper"
+            android:defaultValue="true" />
+
+        <SwitchPreferenceCompat
+            android:key="email_notifications"
+            android:title="Email Reports"
+            android:summary="Receive detailed AI interview review highlights in your inbox"
+            android:icon="@drawable/ic_settings_email_wrapper"
+            android:defaultValue="true" />
+    </PreferenceCategory>
+
+    <PreferenceCategory android:title="Security &amp; Account">
+        <Preference
+            android:key="change_password"
+            android:title="Change Password"
+            android:icon="@drawable/ic_settings_password_wrapper"
+            android:summary="Update your account password" />
+
+        <Preference
+            android:key="mfa_enable"
+            android:title="Multi-Factor Authentication"
+            android:icon="@drawable/ic_settings_mfa_wrapper"
+            android:summary="Secure your account with Google/Microsoft Authenticator" />
+
+        <Preference
+            android:key="delete_account"
+            android:title="Delete Account"
+            android:icon="@drawable/ic_settings_delete_wrapper"
+            android:summary="Permanently delete your profile and practice data" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

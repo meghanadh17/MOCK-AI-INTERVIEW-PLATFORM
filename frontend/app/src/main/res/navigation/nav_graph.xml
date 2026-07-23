@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/splashFragment">
+
+    <!-- Auth Flow -->
+    <fragment android:id="@+id/splashFragment" android:name="com.aiinterview.presentation.auth.SplashFragment" android:label="Splash" tools:layout="@layout/fragment_splash" />
+    <fragment android:id="@+id/onboardingFragment" android:name="com.aiinterview.presentation.auth.OnboardingFragment" android:label="Onboarding" tools:layout="@layout/fragment_onboarding" />
+    <fragment android:id="@+id/loginFragment" android:name="com.aiinterview.presentation.auth.LoginFragment" android:label="Login" tools:layout="@layout/fragment_login" />
+    <fragment android:id="@+id/registerFragment" android:name="com.aiinterview.presentation.auth.RegisterFragment" android:label="Register" tools:layout="@layout/fragment_register" />
+    <fragment android:id="@+id/forgotPasswordFragment" android:name="com.aiinterview.presentation.auth.ForgotPasswordFragment" android:label="Forgot Password" tools:layout="@layout/fragment_forgot_password" />
+    <fragment android:id="@+id/otpVerificationFragment" android:name="com.aiinterview.presentation.auth.OtpVerificationFragment" android:label="OTP Verification" tools:layout="@layout/fragment_otp_verification" />
+
+    <!-- Home -->
+    <fragment android:id="@+id/homeFragment" android:name="com.aiinterview.presentation.home.HomeFragment" android:label="Home" tools:layout="@layout/fragment_home" />
+
+    <!-- Resume Flow -->
+    <fragment android:id="@+id/resumeListFragment" android:name="com.aiinterview.presentation.resume.ResumeListFragment" android:label="Resumes" tools:layout="@layout/fragment_resume_list" />
+    <fragment android:id="@+id/resumeUploadFragment" android:name="com.aiinterview.presentation.resume.ResumeUploadFragment" android:label="Upload Resume" tools:layout="@layout/fragment_resume_upload" />
+    <fragment android:id="@+id/resumeDetailFragment" android:name="com.aiinterview.presentation.resume.ResumeDetailFragment" android:label="Resume Detail" tools:layout="@layout/fragment_resume_detail" />
+    <fragment android:id="@+id/resumeAnalysisFragment" android:name="com.aiinterview.presentation.resume.ResumeAnalysisFragment" android:label="Resume Analysis" tools:layout="@layout/fragment_resume_analysis" />
+
+    <!-- Interview Flow -->
+    <fragment android:id="@+id/interviewSetupFragment" android:name="com.aiinterview.presentation.interview.InterviewSetupFragment" android:label="Interview Setup" tools:layout="@layout/fragment_interview_setup" />
+    <fragment android:id="@+id/interviewSessionFragment" android:name="com.aiinterview.presentation.interview.InterviewSessionFragment" android:label="Interview" tools:layout="@layout/fragment_interview_session" />
+    <fragment android:id="@+id/interviewReportFragment" android:name="com.aiinterview.presentation.interview.InterviewReportFragment" android:label="Interview Report" tools:layout="@layout/fragment_interview_report" />
+    <fragment android:id="@+id/questionBankFragment" android:name="com.aiinterview.presentation.interview.QuestionBankFragment" android:label="Question Bank" tools:layout="@layout/fragment_question_bank" />
+
+    <!-- Video Flow -->
+    <fragment android:id="@+id/videoSetupFragment" android:name="com.aiinterview.presentation.video.VideoSetupFragment" android:label="Video Setup" tools:layout="@layout/fragment_video_setup" />
+    <fragment android:id="@+id/videoInterviewFragment" android:name="com.aiinterview.presentation.video.VideoInterviewFragment" android:label="Video Interview" tools:layout="@layout/fragment_video_interview" />
+    <fragment android:id="@+id/videoReportFragment" android:name="com.aiinterview.presentation.video.VideoReportFragment" android:label="Video Report" tools:layout="@layout/fragment_video_report" />
+    <fragment android:id="@+id/videoPlaybackFragment" android:name="com.aiinterview.presentation.video.VideoPlaybackFragment" android:label="Video Playback" tools:layout="@layout/fragment_video_playback" />
+
+    <!-- Sessions Flow -->
+    <fragment android:id="@+id/sessionHistoryFragment" android:name="com.aiinterview.presentation.sessions.SessionHistoryFragment" android:label="Session History" tools:layout="@layout/fragment_session_history">
+        <action
+            android:id="@+id/action_sessionHistoryFragment_to_sessionDetailFragment"
+            app:destination="@id/sessionDetailFragment" />
+        <action
+            android:id="@+id/action_sessionHistoryFragment_to_progressFragment"
+            app:destination="@id/progressFragment" />
+    </fragment>
+    <fragment android:id="@+id/sessionDetailFragment" android:name="com.aiinterview.presentation.sessions.SessionDetailFragment" android:label="Session Detail" tools:layout="@layout/fragment_session_detail">
+        <argument
+            android:name="sessionId"
+            app:argType="string" />
+        <argument
+            android:name="id"
+            app:argType="string" />
+    </fragment>
+    <fragment android:id="@+id/progressFragment" android:name="com.aiinterview.presentation.sessions.ProgressFragment" android:label="Progress" tools:layout="@layout/fragment_progress" />
+
+    <!-- Quiz Flow -->
+    <fragment android:id="@+id/quizHomeFragment" android:name="com.aiinterview.presentation.quiz.QuizHomeFragment" android:label="Quiz Home" tools:layout="@layout/fragment_quiz_home" />
+    <fragment android:id="@+id/quizDetailFragment" android:name="com.aiinterview.presentation.quiz.QuizDetailFragment" android:label="Quiz Detail" tools:layout="@layout/fragment_quiz_detail" />
+    <fragment android:id="@+id/quizAttemptFragment" android:name="com.aiinterview.presentation.quiz.QuizAttemptFragment" android:label="Quiz Attempt" tools:layout="@layout/fragment_quiz_attempt" />
+    <fragment android:id="@+id/quizResultFragment" android:name="com.aiinterview.presentation.quiz.QuizResultFragment" android:label="Quiz Result" tools:layout="@layout/fragment_quiz_result" />
+    <fragment android:id="@+id/leaderboardFragment" android:name="com.aiinterview.presentation.quiz.LeaderboardFragment" android:label="Leaderboard" tools:layout="@layout/fragment_leaderboard" />
+
+    <!-- Jobs Flow -->
+    <fragment android:id="@+id/jobsFragment" android:name="com.aiinterview.presentation.jobs.JobsFragment" android:label="Jobs" tools:layout="@layout/fragment_jobs" />
+    <fragment android:id="@+id/jobDetailFragment" android:name="com.aiinterview.presentation.jobs.JobDetailFragment" android:label="Job Detail" tools:layout="@layout/fragment_job_detail" />
+    <fragment android:id="@+id/savedJobsFragment" android:name="com.aiinterview.presentation.jobs.SavedJobsFragment" android:label="Saved Jobs" tools:layout="@layout/fragment_saved_jobs" />
+
+    <!-- Profile Flow -->
+    <fragment android:id="@+id/profileFragment" android:name="com.aiinterview.presentation.profile.ProfileFragment" android:label="Profile" tools:layout="@layout/fragment_profile" />
+    <fragment android:id="@+id/settingsFragment" android:name="com.aiinterview.presentation.profile.SettingsFragment" android:label="Settings" tools:layout="@layout/fragment_settings" />
+
+</navigation>

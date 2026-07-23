@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@color/bg_surface"
+    android:padding="24dp">
+
+    <!-- Handle indicator for bottom sheet -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginBottom="16dp"
+        android:background="@color/border_subtle" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Filter &amp; Sort Resumes"
+        android:textAppearance="@style/TextAppearance.App.Title"
+        android:textColor="@color/text_prim"
+        android:layout_marginBottom="16dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SORT BY"
+        android:textAppearance="@style/TextAppearance.App.Label"
+        android:textColor="@color/text_muted"
+        android:textSize="10sp"
+        android:layout_marginBottom="8dp" />
+
+    <RadioGroup
+        android:id="@+id/rg_sort"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp">
+
+        <RadioButton
+            android:id="@+id/rb_newest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Newest Uploaded"
+            android:textColor="@color/text_sec"
+            android:buttonTint="@color/primary" />
+
+        <RadioButton
+            android:id="@+id/rb_oldest"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Oldest Uploaded"
+            android:textColor="@color/text_sec"
+            android:buttonTint="@color/primary" />
+
+        <RadioButton
+            android:id="@+id/rb_ats_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Highest ATS Score"
+            android:textColor="@color/text_sec"
+            android:buttonTint="@color/primary" />
+    </RadioGroup>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="FILTER BY"
+        android:textAppearance="@style/TextAppearance.App.Label"
+        android:textColor="@color/text_muted"
+        android:textSize="10sp"
+        android:layout_marginBottom="8dp" />
+
+    <CheckBox
+        android:id="@+id/cb_primary_only"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show Primary Only"
+        android:textColor="@color/text_sec"
+        android:buttonTint="@color/primary"
+        android:layout_marginBottom="24dp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_apply"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/button_height"
+        android:text="Apply Filters"
+        style="@style/Widget.App.Button.Zinc" />
+</LinearLayout>

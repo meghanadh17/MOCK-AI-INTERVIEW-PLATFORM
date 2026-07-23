@@ -1,0 +1,374 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_void"
+    android:fitsSystemWindows="true">
+
+    <!-- Header layout -->
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/spacing_md"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/card_icon_size"
+            android:layout_height="@dimen/card_icon_size"
+            android:background="@drawable/bg_button_neo"
+            android:src="@drawable/ic_arrow_back"
+            android:scaleType="center"
+            android:contentDescription="Back"
+            app:tint="@color/text_muted" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_breadcrumb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIDEO · REPORT"
+                android:textAppearance="@style/TextAppearance.App.Label" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Performance Analysis"
+                android:textAppearance="@style/TextAppearance.App.Heading" />
+        </LinearLayout>
+
+        <!-- Playback Navigation Button -->
+        <ImageButton
+            android:id="@+id/btn_play_video"
+            android:layout_width="@dimen/card_icon_size"
+            android:layout_height="@dimen/card_icon_size"
+            android:background="@drawable/bg_button_neo"
+            android:src="@drawable/ic_video"
+            android:scaleType="center"
+            android:contentDescription="Watch Recording"
+            app:tint="@color/text_prim" />
+    </LinearLayout>
+
+    <View
+        android:id="@+id/header_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_subtle"
+        app:layout_constraintTop_toBottomOf="@id/layout_header" />
+
+    <!-- Scrollable Report Details -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/header_divider"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_md">
+
+            <!-- Video Playback Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_player"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.App.Card"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SESSION VIDEO PLAYBACK"
+                        android:textAppearance="@style/TextAppearance.App.Label"
+                        android:textColor="@color/text_muted"
+                        android:layout_margin="8dp" />
+
+                    <!-- Player View -->
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        android:background="@color/bg_base">
+
+                        <androidx.media3.ui.PlayerView
+                            android:id="@+id/player_view"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            app:use_controller="false"
+                            app:resize_mode="fit" />
+
+                        <!-- Fallback message if url is empty -->
+                        <TextView
+                            android:id="@+id/tv_player_fallback"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="No recording source file compiled for this session."
+                            android:textAppearance="@style/TextAppearance.App.BodySmall"
+                            android:textColor="@color/text_muted"
+                            android:visibility="gone" />
+                    </FrameLayout>
+
+                    <!-- Playback Controls -->
+                    <LinearLayout
+                        android:id="@+id/layout_playback_controls"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_marginTop="8dp">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="32dp">
+
+                            <FrameLayout
+                                android:id="@+id/layout_annotations_container"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_marginHorizontal="16dp" />
+
+                            <SeekBar
+                                android:id="@+id/seek_bar_playback"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:max="1000"
+                                android:progress="0"
+                                android:paddingStart="16dp"
+                                android:paddingEnd="16dp"
+                                android:thumbTint="@color/primary"
+                                android:progressTint="@color/primary"
+                                android:progressBackgroundTint="@color/bg_muted" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:paddingHorizontal="16dp"
+                            android:layout_marginTop="4dp">
+
+                            <TextView
+                                android:id="@+id/tv_current_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="00:00"
+                                android:textAppearance="@style/TextAppearance.App.Label"
+                                android:textColor="@color/text_sec" />
+
+                            <View
+                                android:layout_width="0dp"
+                                android:layout_height="1dp"
+                                android:layout_weight="1" />
+
+                            <TextView
+                                android:id="@+id/tv_total_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="00:00"
+                                android:textAppearance="@style/TextAppearance.App.Label"
+                                android:textColor="@color/text_sec" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal"
+                            android:layout_marginTop="8dp">
+
+                            <ImageButton
+                                android:id="@+id/btn_play_pause"
+                                android:layout_width="48dp"
+                                android:layout_height="48dp"
+                                android:background="@drawable/bg_button_neo"
+                                android:src="@drawable/ic_play"
+                                android:scaleType="center"
+                                android:contentDescription="Play/Pause"
+                                app:tint="@color/text_prim" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Aggregate Performance Card -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.App.Card"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AGGREGATE PERFORMANCE"
+                        android:textAppearance="@style/TextAppearance.App.Label"
+                        android:textColor="@color/text_muted"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- 2x2 Grid -->
+                    <GridLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:columnCount="2"
+                        android:rowCount="2"
+                        android:alignmentMode="alignBounds"
+                        android:useDefaultMargins="true">
+
+                        <!-- Avg Posture -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:background="@drawable/bg_input_dark"
+                            android:layout_margin="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="AVG POSTURE"
+                                android:textSize="9sp"
+                                android:textAppearance="@style/TextAppearance.App.Label"
+                                android:textColor="@color/text_muted" />
+                            <TextView
+                                android:id="@+id/tv_avg_posture_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="--%"
+                                android:textAppearance="@style/TextAppearance.App.Title"
+                                android:textColor="@color/score_high" />
+                        </LinearLayout>
+
+                        <!-- Eye Gaze -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:background="@drawable/bg_input_dark"
+                            android:layout_margin="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="EYE GAZE"
+                                android:textSize="9sp"
+                                android:textAppearance="@style/TextAppearance.App.Label"
+                                android:textColor="@color/text_muted" />
+                            <TextView
+                                android:id="@+id/tv_eye_gaze_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="--%"
+                                android:textAppearance="@style/TextAppearance.App.Title"
+                                android:textColor="@color/primary" />
+                        </LinearLayout>
+
+                        <!-- Dominant Emotion -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:background="@drawable/bg_input_dark"
+                            android:layout_margin="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="DOMINANT EMOTION"
+                                android:textSize="9sp"
+                                android:textAppearance="@style/TextAppearance.App.Label"
+                                android:textColor="@color/text_muted" />
+                            <TextView
+                                android:id="@+id/tv_dominant_emotion_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="--"
+                                android:textAppearance="@style/TextAppearance.App.Title"
+                                android:textColor="@color/text_prim"
+                                android:singleLine="true"
+                                android:ellipsize="end" />
+                        </LinearLayout>
+
+                        <!-- Speech Clarity -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_columnWeight="1"
+                            android:orientation="vertical"
+                            android:padding="12dp"
+                            android:background="@drawable/bg_input_dark"
+                            android:layout_margin="4dp">
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="SPEECH CLARITY"
+                                android:textSize="9sp"
+                                android:textAppearance="@style/TextAppearance.App.Label"
+                                android:textColor="@color/text_muted" />
+                            <TextView
+                                android:id="@+id/tv_speech_clarity_value"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="--%"
+                                android:textAppearance="@style/TextAppearance.App.Title"
+                                android:textColor="@color/score_mid" />
+                        </LinearLayout>
+                    </GridLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- TabLayout & ViewPager2 Segment -->
+            <com.google.android.material.tabs.TabLayout
+                android:id="@+id/tab_layout_report"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/Widget.App.Tab"
+                app:tabMode="fixed" />
+
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/view_pager_report"
+                android:layout_width="match_parent"
+                android:layout_height="400dp"
+                android:layout_marginTop="12dp"
+                android:nestedScrollingEnabled="true" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/layout_loading_overlay" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="16dp"
+    style="@style/Widget.App.Card">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <!-- Header -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:src="@drawable/ic_sparkles"
+                app:tint="@color/primary" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:layout_marginStart="8dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tv_dialog_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Enhanced Rewrite Suggestions"
+                    android:textAppearance="@style/TextAppearance.App.Title"
+                    android:textColor="@color/text_prim" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="QUANTIFIED ACTION-FIRST REVISION"
+                    android:textAppearance="@style/TextAppearance.App.Label"
+                    android:textColor="@color/text_muted"
+                    android:textSize="8sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btn_close_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginStart="8dp"
+                android:background="?attr/selectableItemBackgroundBorderless"
+                android:src="@drawable/ic_close"
+                app:tint="@color/text_muted"
+                android:contentDescription="Close" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="12dp"
+            android:background="@color/border_subtle" />
+
+        <androidx.core.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Original Content -->
+                <TextView
+                    android:id="@+id/tv_original_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Original Text"
+                    android:textAppearance="@style/TextAppearance.App.Mono"
+                    android:textColor="@color/text_muted"
+                    android:textSize="9sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_original"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.App.Card.Sunken">
+
+                    <TextView
+                        android:id="@+id/tv_original_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textColor="@color/text_sec"
+                        android:textSize="12sp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Enhanced Content -->
+                <TextView
+                    android:id="@+id/tv_enhanced_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AI Action-First Rewrite"
+                    android:textAppearance="@style/TextAppearance.App.Mono"
+                    android:textColor="@color/primary"
+                    android:textSize="9sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_enhanced"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:layout_marginBottom="16dp"
+                    style="@style/Widget.App.Card">
+
+                    <TextView
+                        android:id="@+id/tv_enhanced_text"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textColor="@color/text_prim"
+                        android:textSize="12sp" />
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Impact Analysis -->
+                <TextView
+                    android:id="@+id/tv_impact_header"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="AI Impact Analysis"
+                    android:textAppearance="@style/TextAppearance.App.Mono"
+                    android:textColor="@color/score_high"
+                    android:textSize="9sp" />
+
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/card_impact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    style="@style/Widget.App.Card.Sunken">
+
+                    <TextView
+                        android:id="@+id/tv_impact_analysis"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textColor="@color/text_sec"
+                        android:textSize="12sp" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="12dp"
+            android:background="@color/border_subtle" />
+
+        <!-- Actions -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:orientation="horizontal">
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btn_close"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Close"
+                style="@style/Widget.App.Button.Outline" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

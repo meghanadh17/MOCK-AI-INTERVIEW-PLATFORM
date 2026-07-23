@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base dark-only theme â€” NO DayNight, pure void black -->
+    <style name="Theme.AiInterview" parent="Theme.Material3.Dark.NoActionBar">
+        <!-- Core palette -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorOnPrimary">@color/primary_foreground</item>
+        <item name="colorPrimaryContainer">@color/bg_elevated</item>
+        <item name="colorOnPrimaryContainer">@color/text_prim</item>
+
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorOnSecondary">@color/secondary_foreground</item>
+        <item name="colorSecondaryContainer">@color/bg_muted</item>
+        <item name="colorOnSecondaryContainer">@color/text_sec</item>
+
+        <item name="colorSurface">@color/bg_surface</item>
+        <item name="colorOnSurface">@color/text_prim</item>
+        <item name="colorSurfaceVariant">@color/bg_elevated</item>
+        <item name="colorOnSurfaceVariant">@color/text_sec</item>
+        <item name="colorSurfaceContainerHigh">@color/bg_overlay</item>
+        <item name="colorSurfaceContainer">@color/bg_surface</item>
+        <item name="colorSurfaceContainerLow">@color/bg_base</item>
+
+        <item name="colorError">@color/destructive</item>
+        <item name="colorOnError">@color/destructive_foreground</item>
+
+        <item name="colorOutline">@color/border_def</item>
+        <item name="colorOutlineVariant">@color/border_subtle</item>
+
+        <item name="android:colorBackground">@color/bg_void</item>
+        <item name="colorOnBackground">@color/text_prim</item>
+
+        <!-- System bars -->
+        <item name="android:statusBarColor">@color/bg_void</item>
+        <item name="android:navigationBarColor">@color/bg_surface</item>
+        <item name="android:windowLightStatusBar">false</item>
+        <item name="android:windowLightNavigationBar">false</item>
+
+        <!-- Ripple -->
+        <item name="colorControlHighlight">@color/ripple_dark</item>
+
+        <!-- Typography -->
+        <item name="fontFamily">@font/ibm_plex_sans_regular</item>
+
+        <!-- Default widget styles -->
+        <item name="materialCardViewStyle">@style/Widget.App.Card</item>
+        <item name="textInputStyle">@style/Widget.App.TextInput.Outlined</item>
+        <item name="bottomNavigationStyle">@style/Widget.App.BottomNav</item>
+        <item name="materialButtonStyle">@style/Widget.App.Button.Primary</item>
+        <item name="tabStyle">@style/Widget.App.Tab</item>
+        <item name="preferenceTheme">@style/PreferenceThemeOverlay</item>
+    </style>
+
+    <!-- Splash-specific (fully immersive void) -->
+    <style name="Theme.AiInterview.Splash" parent="Theme.AiInterview">
+        <item name="android:statusBarColor">@android:color/transparent</item>
+        <item name="android:navigationBarColor">@android:color/transparent</item>
+    </style>
+
+</resources>

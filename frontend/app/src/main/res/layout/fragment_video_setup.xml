@@ -1,0 +1,598 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_void"
+    android:fitsSystemWindows="true">
+
+    <!-- Header row -->
+    <LinearLayout
+        android:id="@+id/layout_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="@dimen/spacing_md"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="@dimen/card_icon_size"
+            android:layout_height="@dimen/card_icon_size"
+            android:background="@drawable/bg_button_neo"
+            android:src="@drawable/ic_arrow_back"
+            android:scaleType="center"
+            android:contentDescription="Back"
+            app:tint="@color/text_muted" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="@dimen/spacing_md"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_breadcrumb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="VIDEO · SETUP"
+                android:textAppearance="@style/TextAppearance.App.Label" />
+
+            <TextView
+                android:id="@+id/tv_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Camera Alignment &amp; Setup"
+                android:textAppearance="@style/TextAppearance.App.Heading" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/header_divider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/border_subtle"
+        app:layout_constraintTop_toBottomOf="@id/layout_header" />
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/header_divider"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_md">
+
+            <!-- LEFT/FIRST BLOCK: Hardware Alignment Check -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_hardware_check"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_def"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/bg_surface"
+                android:layout_marginBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HARDWARE ALIGNMENT CHECK"
+                        android:textAppearance="@style/TextAppearance.App.Label"
+                        android:textColor="@color/primary"
+                        android:layout_marginBottom="12dp" />
+
+                    <!-- Live feed view area -->
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="match_parent"
+                        android:layout_height="200dp"
+                        app:cardCornerRadius="12dp"
+                        app:cardElevation="0dp"
+                        app:cardBackgroundColor="@color/bg_base">
+
+                        <FrameLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent">
+
+                            <androidx.camera.view.PreviewView
+                                android:id="@+id/camera_setup_preview"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:visibility="gone"
+                                app:scaleType="fillCenter" />
+
+                            <!-- Overlay: Live Feed Badge -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="start|top"
+                                android:layout_margin="12dp"
+                                android:background="#14352A"
+                                android:text="LIVE FEED"
+                                android:textColor="#10B981"
+                                android:textSize="9sp"
+                                android:textStyle="bold"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp" />
+
+                            <!-- Overlay: Grid Badge -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="end|top"
+                                android:layout_margin="12dp"
+                                android:background="@color/overlay_80"
+                                android:text="GRID"
+                                android:textColor="@color/text_prim"
+                                android:textSize="9sp"
+                                android:textStyle="bold"
+                                android:paddingHorizontal="8dp"
+                                android:paddingVertical="4dp" />
+
+                            <!-- Permission Prompt -->
+                            <LinearLayout
+                                android:id="@+id/layout_permission_prompt"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:orientation="vertical"
+                                android:gravity="center"
+                                android:padding="16dp"
+                                android:background="@color/bg_surface">
+
+                                <ImageView
+                                    android:layout_width="40dp"
+                                    android:layout_height="40dp"
+                                    android:src="@drawable/ic_camera"
+                                    app:tint="@color/text_muted" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="8dp"
+                                    android:text="Permissions Required"
+                                    android:gravity="center"
+                                    android:textAppearance="@style/TextAppearance.App.Body"
+                                    android:textColor="@color/text_muted" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btn_grant_permission"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="36dp"
+                                    android:layout_marginTop="12dp"
+                                    android:text="Enable Camera"
+                                    android:paddingHorizontal="16dp"
+                                    style="@style/Widget.App.Button.Zinc" />
+                            </LinearLayout>
+                        </FrameLayout>
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <!-- Select active camera -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SELECT ACTIVE CAMERA"
+                        android:textSize="9sp"
+                        android:textAppearance="@style/TextAppearance.App.Label"
+                        android:textColor="@color/text_muted"
+                        android:layout_marginTop="16dp" />
+
+                    <LinearLayout
+                        android:id="@+id/select_camera_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/bg_input_dark"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp">
+
+                        <TextView
+                            android:id="@+id/tv_selected_camera"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Front Wide Vision HD Camera"
+                            android:textAppearance="@style/TextAppearance.App.Body"
+                            android:textColor="@color/text_prim" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_arrow_forward"
+                            android:rotation="90"
+                            app:tint="@color/text_muted" />
+                    </LinearLayout>
+
+                    <!-- Indicators -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginBottom="8dp">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_mic"
+                            app:tint="#10B981" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="Audio Feed: Active microphone channel verified."
+                            android:textSize="11sp"
+                            android:textColor="#10B981" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_sparkles"
+                            app:tint="#10B981" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="Latency: Latency metrics within stable target ranges."
+                            android:textSize="11sp"
+                            android:textColor="#10B981" />
+                    </LinearLayout>
+
+                    <!-- Hidden progress mic level for logic compatibility -->
+                    <ProgressBar
+                        android:id="@+id/progress_mic_level"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:visibility="invisible" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- RIGHT/SECOND BLOCK: Setup Form Panel -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_def"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/bg_surface"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:gravity="start">
+
+                    <!-- Target Job Role Custom Selector -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Target Job Role"
+                        android:textAppearance="@style/TextAppearance.App.Title"
+                        android:textColor="@color/text_prim" />
+
+                    <LinearLayout
+                        android:id="@+id/select_role_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/bg_input_dark"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:id="@+id/tv_selected_role"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text=""
+                            android:hint="Select or search role..."
+                            android:textColorHint="@color/text_muted"
+                            android:textAppearance="@style/TextAppearance.App.Body"
+                            android:textColor="@color/text_prim" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_arrow_forward"
+                            android:rotation="90"
+                            app:tint="@color/text_muted" />
+                    </LinearLayout>
+
+                    <!-- Resume Custom Selector -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Link Resume for Dynamic RAG Context"
+                        android:textAppearance="@style/TextAppearance.App.Title"
+                        android:textColor="@color/text_prim" />
+
+                    <LinearLayout
+                        android:id="@+id/select_resume_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/bg_input_dark"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:id="@+id/tv_selected_resume"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="-- No Resume Context (General Questions) --"
+                            android:textAppearance="@style/TextAppearance.App.Body"
+                            android:textColor="@color/text_prim" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_arrow_forward"
+                            android:rotation="90"
+                            app:tint="@color/text_muted" />
+                    </LinearLayout>
+
+                    <!-- Evaluation Focus Custom Selector -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Interview Evaluation Focus"
+                        android:textAppearance="@style/TextAppearance.App.Title"
+                        android:textColor="@color/text_prim" />
+
+                    <LinearLayout
+                        android:id="@+id/select_focus_container"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp"
+                        android:background="@drawable/bg_input_dark"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="16dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <TextView
+                            android:id="@+id/tv_selected_focus"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Technical Focus"
+                            android:textAppearance="@style/TextAppearance.App.Body"
+                            android:textColor="@color/text_prim" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/ic_arrow_forward"
+                            android:rotation="90"
+                            app:tint="@color/text_muted" />
+                    </LinearLayout>
+
+                    <!-- Question Count Stepper -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Total Session Questions"
+                        android:textAppearance="@style/TextAppearance.App.Title"
+                        android:textColor="@color/text_prim" />
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        android:gravity="center_vertical"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="16dp">
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_question_dec"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:padding="0dp"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:insetLeft="0dp"
+                            android:insetRight="0dp"
+                            app:icon="@drawable/ic_minus"
+                            app:iconTint="@color/text_prim"
+                            app:iconGravity="textStart"
+                            app:iconSize="18dp"
+                            style="@style/Widget.App.Button.Outline" />
+
+                        <TextView
+                            android:id="@+id/tv_question_count"
+                            android:layout_width="80dp"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:text="5"
+                            android:textAppearance="@style/TextAppearance.App.Title"
+                            android:textColor="@color/text_prim" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btn_question_inc"
+                            android:layout_width="48dp"
+                            android:layout_height="48dp"
+                            android:padding="0dp"
+                            android:insetTop="0dp"
+                            android:insetBottom="0dp"
+                            android:insetLeft="0dp"
+                            android:insetRight="0dp"
+                            app:icon="@drawable/ic_add"
+                            app:iconTint="@color/text_prim"
+                            app:iconGravity="textStart"
+                            app:iconSize="18dp"
+                            style="@style/Widget.App.Button.Outline" />
+                    </LinearLayout>
+
+                    <!-- Difficulty Level -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="AI Agent Assessment Difficulty"
+                        android:textAppearance="@style/TextAppearance.App.Title"
+                        android:textColor="@color/text_prim" />
+
+                    <com.google.android.material.slider.Slider
+                        android:id="@+id/slider_difficulty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="4dp"
+                        android:valueFrom="0.0"
+                        android:valueTo="3.0"
+                        android:stepSize="1.0" />
+
+                    <TextView
+                        android:id="@+id/tv_difficulty_label"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="16dp"
+                        android:gravity="center"
+                        android:text="Selected Difficulty: MEDIUM"
+                        android:textAppearance="@style/TextAppearance.App.Mono"
+                        android:textColor="@color/primary" />
+
+                    <!-- Job Description Input -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Job Description Details (Optional)"
+                        android:textAppearance="@style/TextAppearance.App.Title"
+                        android:textColor="@color/text_prim" />
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:id="@+id/til_job_description"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginBottom="24dp"
+                        app:hintEnabled="false">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/et_job_description"
+                            android:layout_width="match_parent"
+                            android:layout_height="100dp"
+                            android:gravity="top|start"
+                            android:padding="12dp"
+                            android:background="@drawable/bg_input_dark"
+                            android:hint="Paste the target job description to dynamically align questions..."
+                            android:textColorHint="@color/text_muted"
+                            android:inputType="textMultiLine"
+                            android:textAppearance="@style/TextAppearance.App.Body"
+                            android:textColor="@color/text_prim" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Dummy elements for code compatibility with layout binding -->
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/chip_technical"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:visibility="gone"
+                        android:checked="true"/>
+
+                    <!-- Begin Session Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_begin_interview"
+                        android:layout_width="match_parent"
+                        android:layout_height="52dp"
+                        android:text="Launch Camera Practice Session"
+                        app:icon="@drawable/ic_sparkles"
+                        app:iconGravity="textStart"
+                        android:layout_marginBottom="16dp"
+                        style="@style/Widget.App.Button.Primary" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- THIRD BLOCK: Video Session History -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_history_sessions"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                app:cardCornerRadius="16dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/border_def"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/bg_surface"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="PAST PRACTICE HISTORY"
+                        android:textAppearance="@style/TextAppearance.App.Label"
+                        android:textColor="@color/primary"
+                        android:layout_marginBottom="12dp" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rv_session_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:nestedScrollingEnabled="false" />
+
+                    <TextView
+                        android:id="@+id/tv_history_empty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:padding="16dp"
+                        android:text="No previous video practice sessions found."
+                        android:textAppearance="@style/TextAppearance.App.Body"
+                        android:textColor="@color/text_muted"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <include layout="@layout/layout_loading_overlay" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
