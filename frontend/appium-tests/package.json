@@ -1,0 +1,37 @@
+{
+  "name": "mockai-appium-tests",
+  "version": "1.0.0",
+  "description": "Appium E2E Mobile Test Suite & Excel Analysis Generator for MockAI Android Application",
+  "main": "tests/run_all_e2e_tests.js",
+  "scripts": {
+    "test": "node tests/run_all_e2e_tests.js",
+    "test:auth": "node tests/01_auth.test.js",
+    "test:home": "node tests/02_home_dashboard.test.js",
+    "test:interview": "node tests/03_interview_flow.test.js",
+    "test:quiz": "node tests/04_quiz_practice.test.js",
+    "test:resume": "node tests/05_resume_analysis.test.js",
+    "test:jobs": "node tests/06_jobs_portal.test.js",
+    "test:sessions": "node tests/07_session_analytics.test.js",
+    "test:profile": "node tests/08_profile_settings.test.js",
+    "generate-excel": "python generate_excel_report.py",
+    "test:all": "npm test && npm run generate-excel"
+  },
+  "keywords": [
+    "appium",
+    "android",
+    "uiautomator2",
+    "e2e",
+    "testing",
+    "mockai",
+    "mobile-automation",
+    "excel-analysis"
+  ],
+  "author": "MockAI QA Mobile Automation Team",
+  "license": "MIT",
+  "dependencies": {
+    "webdriverio": "^8.24.0"
+  },
+  "devDependencies": {
+    "appium": "^2.5.0"
+  }
+}
