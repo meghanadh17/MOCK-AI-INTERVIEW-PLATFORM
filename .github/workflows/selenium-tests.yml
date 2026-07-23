@@ -1,4 +1,4 @@
-name: E2E & Selenium Automated Test Suite
+name: E2E & Web Selenium Automated Test Suite
 
 on:
   push:
@@ -9,7 +9,7 @@ on:
 
 jobs:
   selenium-e2e-tests:
-    name: Run Selenium E2E Tests & Generate Excel Report
+    name: Run Web Selenium E2E Tests & Generate Excel Report
     runs-on: ubuntu-latest
 
     steps:
@@ -31,21 +31,21 @@ jobs:
           python -m pip install --upgrade pip
           pip install openpyxl
 
-      - name: Install Web Frontend Dependencies & Build
+      - name: Install Web Application Dependencies & Build
         run: |
           cd web
           npm install
           npm run build
 
-      - name: Start Web Frontend Preview Server in Background
+      - name: Start Web Application Preview Server in Background
         run: |
           cd web
           npm run preview -- --port 5173 &
           sleep 5
 
-      - name: Install Selenium Test Dependencies
+      - name: Install Web Selenium Test Dependencies
         run: |
-          cd frontend/selenuim-tests
+          cd web/selenium-tests
           npm install
 
       - name: Install Chrome Browser & ChromeDriver
@@ -53,23 +53,24 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y google-chrome-stable
 
-      - name: Execute Automated Selenium Login Tests (Headless)
+      - name: Execute Automated Web Selenium E2E Tests (Headless)
         env:
           HEADLESS: "true"
-          TEST_BASE_URL: "http://localhost:5173/login"
+          TEST_BASE_URL: "http://localhost:5173"
         run: |
-          cd frontend/selenuim-tests
-          npm test
+          cd web/selenium-tests
+          node tests/run_all_e2e_tests.js
 
-      - name: Generate 305 Test Cases Excel Report
+      - name: Generate Web Selenium E2E Excel Analysis Report
         run: |
-          python frontend/selenuim-tests/generate_excel_report.py
+          cd web/selenium-tests
+          python generate_excel_report.py
 
-      - name: Upload Excel Test Report Artifact
+      - name: Upload Web Selenium Excel Test Report Artifact
         uses: actions/upload-artifact@v4
         with:
-          name: MockAI-Login-E2E-305-TestCases-Report
+          name: MockAI-Web-Selenium-E2E-Analysis-Report
           path: |
-            frontend/selenuim-tests/MockAI_E2E_Login_Test_Suite_305_TestCases.xlsx
-            frontend/selenuim-tests/login_test_cases_summary_and_details.xlsx
+            web/selenium-tests/MockAI_Web_E2E_Selenium_Test_Suite_Analysis.xlsx
+            web/selenium-tests/test_execution_results.json
           retention-days: 30
