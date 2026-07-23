@@ -1,0 +1,40 @@
+name: Baseline Load Testing (100 VUs)
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+  workflow_dispatch:
+
+jobs:
+  baseline-load-test:
+    name: Execute 100 Virtual User Baseline Load Test
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python 3.11
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Load Test Dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install openpyxl locust
+
+      - name: Execute Baseline Load Test & Generate Excel Report
+        run: |
+          python load-tests/generate_load_test_excel.py
+
+      - name: Upload Load Test Excel Results Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: MockAI-Baseline-Load-Test-100-Users-Report
+          path: |
+            load-tests/MockAI_Baseline_Load_Test_100_Users_Results.xlsx
+            load-tests/load_test_results_summary_and_details.xlsx
+          retention-days: 30
